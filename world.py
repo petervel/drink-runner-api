@@ -66,7 +66,6 @@ class Bot:
         return self.current_node.get_connected_node(self.direction)
 
     def add_order(self, order):
-        print(f"Adding order {order}")
         self.current_orders.append(order)
 
     def reached_crossing(self):

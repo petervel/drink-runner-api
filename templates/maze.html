@@ -5,9 +5,9 @@ Drinks Runner
 
 {% block body %}
 
-<div style="position: relative">
+<div style="position: relative; font-size: 20px;">
 {% for id in maze.points %}
-    <span style="position: absolute; left: {{20 * maze.points[id].x}}px; top: {{20 * maze.points[id].y}}px;">
+    <span style="position: absolute; left: {{50 * maze.points[id].x}}px; top: {{50 * maze.points[id].y}}px;">
         {% if bot.current_node.name == id %}
             <b style="font-weight: 900;">
                 {% if bot.direction.value == 'east' %}
