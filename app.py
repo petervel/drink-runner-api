@@ -41,5 +41,3 @@ def mark_crossing():
     # expected = world.bot.next_expected_node()
     # if expected == None:
     #     world.bot.add_crossing()
-    
-
