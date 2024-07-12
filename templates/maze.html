@@ -9,7 +9,17 @@ Drinks Runner
 {% for id in maze.points %}
     <span style="position: absolute; left: {{20 * maze.points[id].x}}px; top: {{20 * maze.points[id].y}}px;">
         {% if bot.current_node.name == id %}
-            <b style="font-weight: 900;">{{ maze.points[id].name }}</b>
+            <b style="font-weight: 900;">
+                {% if bot.direction.value == 'east' %}
+                    &gt;
+                {% elif bot.direction.value == 'west' %}
+                    &lt;
+                {% elif bot.direction.value == 'north' %}
+                    ^
+                {% else %}
+                    v
+                {% endif %}
+            </b>
         {% else %}
             {{ maze.points[id].name }}
         {% endif %}
