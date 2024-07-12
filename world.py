@@ -58,14 +58,15 @@ class Bot:
         self.direction = maze.start_direction
         self.current_orders = []
         with open(filename) as file:
-            d = json.load(file)
-            for order in d["orders"]:
-                self.current_orders.append(Order(order["point"], order["count"]))
+            orders = json.load(file)
+            for order in orders:
+                self.add_order(Order(order["point"], order["count"]))
         
     def next_expected_node(self) -> Node | None:
         return self.current_node.get_connected_node(self.direction)
 
     def add_order(self, order):
+        print(f"Adding order {order}")
         self.current_orders.append(order)
 
     def reached_crossing(self):
@@ -94,4 +95,22 @@ class Bot:
             Direction.WEST: Direction.NORTH
         }
         self.direction = lookup[self.direction]
+    
+    # TODO
+    def get_target(self):
+        return "e"
+    
+    def get_shortest_route_to(self, start_node, target_id):
+        pass
+        # best_route = None
+        # for connected_node_id in self.current_node.connected_nodes.values():
+            
+            
+    
+    def get_next_instruction(self):
+        pass
+        # target_id = self.get_target()
+        # route = self.get_shortest_route(self.current_node, target_id)
+        # return route[0]
+        
         

@@ -35,17 +35,17 @@ def index():
 def bonk():
     return jsonify("bonk")
 
-@app.route("/reached-crossing", methods=["GET"])
+@app.route("/reached-crossing")
 def reached_crossing():
     bot.reached_crossing()
-    return jsonify(bot.current_node.name)
+    return jsonify(bot.get_next_instruction())
 
-@app.route("/turned-left", methods=["GET"])
+@app.route("/turned-left")
 def mark_turn_left():
     bot.turned_left()
-    return jsonify(bot.current_node.name)
+    return jsonify(bot.get_next_instruction())
 
-@app.route("/turned-right", methods=["GET"])
+@app.route("/turned-right")
 def mark_turn_right():
     bot.turned_right()
-    return jsonify(bot.current_node.name)
+    return jsonify(bot.get_next_instruction())
