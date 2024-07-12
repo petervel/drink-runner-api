@@ -1,0 +1,31 @@
+Data:
+    There are two json files which are given: layout and order.
+    The layout consists out of a pickup-point (also the starting point) from which the drinks should be picked up. The second thing that is specified is de starting direction of the deliver bot.
+    Points are specified in the following way:
+    - x: x position of the point, mainly for graphical representation
+    - y: y position of the point, mainly for graphical representation
+    - east, south, west, north: connected point in respective wind direction.
+    The example layout corresponds with the following representation:
+    
+    ```
+    a - b
+    |   |
+    |   |
+    d - c -- e
+    ```
+
+    Note that there can be dead-ends! And also see the example jpeg for a real life example.
+
+    Than in `order.json` the drinks order is specified. Consisting out of the point where the customer is and the amount of drinks.  
+
+
+Rules of ordering:
+    The robot can carry up to five drinks at once, and may do partial drop offs. It can pick up new drinks at the pick up point (where you start).
+    
+    The drinks can be delivered in whatever order is the quickest.
+
+    When picking up or delivering an order, the robot needs to pause for 1 second.
+
+    Your visualization should (at least!) make it clear how many drinks your robot is currently carrying.
+
+    Optionally your team may choose to do the demo with a blockade, meaning a physical obstacle will be placed on one of the lines, and your robot will need to route around it.

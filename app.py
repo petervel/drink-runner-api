@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template, jsonify
 from typing import Any
-from world import Maze, BotState, World
+from world import Maze, Bot
 import postgresqlite
 
 app = Flask(__name__)
@@ -12,9 +12,8 @@ app.config['SECRET_KEY'] = "th3y'11 n3v3r gu3ss th15"
 
 db: Any = postgresqlite.connect()
 
-maze = Maze()
-bot = BotState(maze)
-world = World(maze, bot)
+world = Maze('layout.json')
+bot = Bot(world)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -38,8 +37,9 @@ def bonk():
 
 @app.route("/crossing", methods=["GET"])
 def mark_crossing():
-    expected = world.bot.next_expected_node()
-    if expected == None:
-        world.bot.add_crossing()
+    pass
+    # expected = world.bot.next_expected_node()
+    # if expected == None:
+    #     world.bot.add_crossing()
     
 
