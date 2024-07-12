@@ -97,7 +97,6 @@
             }
             self.direction = lookup[self.direction]
         
-<<<<<<< HEAD
     def next_expected_node(self) -> Node | None:
         return self.current_node.get_connected_node(self.direction)
 
@@ -121,11 +120,6 @@
             Direction.SOUTH: Direction.EAST
         }
         self.direction = lookup[self.direction]
-=======
-        # TODO
-        def get_target(self):
-            return "e"
->>>>>>> f787cd9 (added dijkstra algorithm)
         
         def get_shortest_route_to(self, start_node: Node, target_id: str):
             # Initialize the priority queue with the start node
