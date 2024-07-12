@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <title>{% block title %}{% endblock %} | Lingo</title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="brand">Lingo</span>
+            <a href="/">Play</a>
+            <a href="/history" class="grow">History</a>
+            {% if session["user_id"] %}
+            <a href="/logout">Logout</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% if message %}
+        <div class="message">{{message}}</div>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </main>
+</body>

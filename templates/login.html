@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Guess the word!{% endblock %}
+
+{% block body %}
+
+<form method="POST" class="input-row">
+    <input autofocus type="text" placeholder="User name" name="name">
+    <input autofocus type="password" placeholder="Password" name="password">
+    <input type="submit" value="Guess">
+</form>
+
+{% endblock %}

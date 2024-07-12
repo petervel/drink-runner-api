@@ -1,0 +1,1 @@
+/Users/pve15/.cache/postgresqlite/14.3/bin/postgres "-c" "dynamic_library_path=/Users/pve15/.cache/postgresqlite/14.3/lib" "-D" "/Users/pve15/lms42/assignments/flask-sql/solution1/data/postgresqlite/pgdata" "-p" "38240" "--unix_socket_directories=/tmp/postgresqlite-RuSWRJsk"

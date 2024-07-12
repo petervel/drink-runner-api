@@ -1,0 +1,114 @@
+body, input {
+    font-family: roboto, arial;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5rem;
+}
+
+header {
+    background-color: rgb(0, 34, 68);
+    box-shadow: 0 0 5px black;
+    color: white;
+}
+
+header > nav, main {
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+header > nav {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+header > nav > a {
+    color: rgb(186, 214, 242);
+}
+
+header > nav > .grow {
+    flex: 1;
+}
+
+ol {
+    margin: 0 0 20px 0;
+}
+
+
+.brand {
+    font-size: 140%;
+}
+
+.guess {
+    font-family: monospace;
+}
+
+.guess > .correct {
+    background-color: #009c82;
+}
+
+.guess > .misplaced {
+    background-color: #ef6b00;
+}
+
+.guess > * {
+    background-color: #9e0000;
+    color: white;
+    padding: 0.2rem 0.4rem;
+    display: inline-block;
+    font-size: 125%;
+}
+
+.guess {
+    margin: 0.1rem 0;
+}
+
+.history .guessed {
+    color: #009c82;
+}
+
+.history .failed {
+    color: #9e0000;
+}
+
+.message {
+    background-color: #ef6b00;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+table {
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+td, th {
+    padding: 5px 10px;
+    text-align: left;
+}
+
+td:not(:first-child), th:not(:first-child) {
+    border-left: 1px solid #ddd;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row > input[type='text'], .input-row > input[type=''] {
+    flex: 1;
+}
