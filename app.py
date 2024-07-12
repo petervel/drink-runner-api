@@ -12,8 +12,13 @@ app.config['SECRET_KEY'] = "th3y'11 n3v3r gu3ss th15"
 
 db: Any = postgresqlite.connect()
 
+<<<<<<< HEAD
 maze = Maze('final/layout.json')
 bot = Bot(maze, 'final/order.json')
+=======
+world = Maze('layout.json')
+bot = Bot(world)
+>>>>>>> f787cd9 (added dijkstra algorithm)
 
 @app.route("/")
 def index():
@@ -23,17 +28,17 @@ def index():
 def bonk():
     return jsonify("bonk")
 
-@app.route("/reached-crossing")
+@app.route("/reached-crossing", methods=["GET"])
 def reached_crossing():
     bot.reached_crossing()
-    return jsonify(bot.get_next_instruction())
+    return jsonify(bot.current_node.name)
 
-@app.route("/turned-left")
+@app.route("/turned-left", methods=["GET"])
 def mark_turn_left():
     bot.turned_left()
-    return jsonify(bot.get_next_instruction())
+    return jsonify(bot.current_node.name)
 
-@app.route("/turned-right")
+@app.route("/turned-right", methods=["GET"])
 def mark_turn_right():
     bot.turned_right()
-    return jsonify(bot.get_next_instruction())
+    return jsonify(bot.current_node.name)
