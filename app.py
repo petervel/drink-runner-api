@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = "th3y'11 n3v3r gu3ss th15"
 db: Any = postgresqlite.connect()
 
 world = Maze('layout.json')
-bot = Bot(world)
+bot = Bot(world, 'order.json')
 
 @app.route("/", methods=["GET", "POST"])
 def index():

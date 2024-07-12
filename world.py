@@ -10,8 +10,8 @@ class Direction(Enum):
 class Maze:
     def __init__(self, filename):
         print("loading maze")
-        with open(filename) as f:
-            d = json.load(f)
+        with open(filename) as file:
+            d = json.load(file)
             self.start_node = d["pickup-point"]
             self.start_direction = d["start-direction"]
             self.points = {}
@@ -31,7 +31,6 @@ class Node:
         self.connected_nodes: dict[Direction, str] = {}
         for direction in [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]:
             if direction.value in point_data:
-                print(direction, "found in", point_data)
                 self.connected_nodes[direction] = point_data[direction.value]
 
     def get_connected_node(self, direction: Direction):
@@ -39,8 +38,12 @@ class Node:
             node_id = self.connected_nodes[direction]
             return self.maze.points[node_id]
 
+class Order:
+    def __init__(self, point_id, count):
+        self.point_id = point_id
+        self.count = count
 class Bot:
-    def __init__(self, maze: Maze) -> None:
+    def __init__(self, maze: Maze, filename: str) -> None:
         self.maze = maze
         self.current_node: Node = maze.points[maze.start_node]
         if maze.start_direction == "north":
@@ -54,7 +57,11 @@ class Bot:
             
         self.direction = maze.start_direction
         self.current_orders = []
-    
+        with open(filename) as file:
+            d = json.load(file)
+            for order in d["orders"]:
+                self.current_orders.append(Order(order["point"], order["count"]))
+        
     def next_expected_node(self) -> Node | None:
         return self.current_node.get_connected_node(self.direction)
 
