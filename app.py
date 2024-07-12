@@ -15,6 +15,12 @@ db: Any = postgresqlite.connect()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    db.execute("""
+        create table IF NOT EXISTS test(
+               test text NOT NULL PRIMARY KEY
+        );
+    """)
+
     test = db.query_column("""
         select *
         from test
