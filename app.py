@@ -12,24 +12,12 @@ app.config['SECRET_KEY'] = "th3y'11 n3v3r gu3ss th15"
 
 db: Any = postgresqlite.connect()
 
-world = Maze('layout.json')
-bot = Bot(world, 'order.json')
+maze = Maze('layout.json')
+bot = Bot(maze, 'order.json')
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    db.execute("""
-        create table IF NOT EXISTS test(
-               test text NOT NULL PRIMARY KEY
-        );
-    """)
-
-    test = db.query_column("""
-        select *
-        from test
-        """,
-    )
-
-    return render_template('guess.html', test=test)
+    return render_template('maze.html', maze=maze, bot=bot)
 
 @app.route("/bonk", methods=["GET"])
 def bonk():

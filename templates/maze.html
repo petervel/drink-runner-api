@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+Drinks Runner
+{% endblock %}
+
+{% block body %}
+
+<div style="position: relative">
+{% for id in maze.points %}
+    <span style="position: absolute; left: {{20 * maze.points[id].x}}px; top: {{20 * maze.points[id].y}}px;">
+        {% if bot.current_node.name == id %}
+            <b style="font-weight: 900;">{{ maze.points[id].name }}</b>
+        {% else %}
+            {{ maze.points[id].name }}
+        {% endif %}
+    </span>
+{% endfor %}
+</div>
+
+{% endblock %}
+
