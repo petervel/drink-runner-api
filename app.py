@@ -35,9 +35,17 @@ def index():
 def bonk():
     return jsonify("bonk")
 
-@app.route("/crossing", methods=["GET"])
-def mark_crossing():
-    pass
-    # expected = world.bot.next_expected_node()
-    # if expected == None:
-    #     world.bot.add_crossing()
+@app.route("/reached-crossing", methods=["GET"])
+def reached_crossing():
+    bot.reached_crossing()
+    return jsonify(bot.current_node.name)
+
+@app.route("/turned-left", methods=["GET"])
+def mark_turn_left():
+    bot.turned_left()
+    return jsonify(bot.current_node.name)
+
+@app.route("/turned-right", methods=["GET"])
+def mark_turn_right():
+    bot.turned_right()
+    return jsonify(bot.current_node.name)

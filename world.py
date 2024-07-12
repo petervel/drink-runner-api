@@ -19,6 +19,7 @@ class Maze:
             for (_, key) in enumerate(points_data):
                 point = points_data[key]
                 self.points[key] = Node(self, key, point)
+            print("maze loaded.")
 
 class Node:
     def __init__(self, maze: Maze, name, point_data):
@@ -28,9 +29,10 @@ class Node:
         self.y = point_data["y"]
 
         self.connected_nodes: dict[Direction, str] = {}
-        for _, direction in enumerate(Direction):
-            if direction in point_data:
-                self.connected_nodes[direction] = point_data[direction]
+        for direction in [Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST]:
+            if direction.value in point_data:
+                print(direction, "found in", point_data)
+                self.connected_nodes[direction] = point_data[direction.value]
 
     def get_connected_node(self, direction: Direction):
         if direction in self.connected_nodes:
@@ -40,7 +42,16 @@ class Node:
 class Bot:
     def __init__(self, maze: Maze) -> None:
         self.maze = maze
-        self.current_node: Node = maze.start_node
+        self.current_node: Node = maze.points[maze.start_node]
+        if maze.start_direction == "north":
+            maze.start_direction = Direction.NORTH
+        elif maze.start_direction == "east":
+            maze.start_direction = Direction.EAST
+        elif maze.start_direction == "south":
+            maze.start_direction = Direction.SOUTH
+        else:
+            maze.start_direction = Direction.WEST
+            
         self.direction = maze.start_direction
         self.current_orders = []
     
@@ -52,6 +63,28 @@ class Bot:
 
     def reached_crossing(self):
         next_node = self.next_expected_node()
+        print(f"{self.direction}...{self.current_node.connected_nodes}")
         if next_node:
+            print(f"Moving from {self.current_node.name} to {next_node.name}")
             self.current_node = next_node
+            
+        print(f"Current node: {self.current_node.name}")
 
+    def turned_left(self):
+        lookup = {
+            Direction.EAST: Direction.NORTH,
+            Direction.NORTH: Direction.WEST,
+            Direction.WEST: Direction.SOUTH,
+            Direction.SOUTH: Direction.EAST
+        }
+        self.direction = lookup[self.direction]
+        
+    def turned_right(self):
+        lookup = {
+            Direction.NORTH: Direction.EAST,
+            Direction.EAST: Direction.SOUTH,
+            Direction.SOUTH: Direction.WEST,
+            Direction.WEST: Direction.NORTH
+        }
+        self.direction = lookup[self.direction]
+        
