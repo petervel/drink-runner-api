@@ -1,1 +1,1 @@
-/Users/pve15/.cache/postgresqlite/14.3/bin/postgres "-c" "dynamic_library_path=/Users/pve15/.cache/postgresqlite/14.3/lib" "-D" "/Users/pve15/lms42/assignments/flask-sql/solution1/data/postgresqlite/pgdata" "-p" "38240" "--unix_socket_directories=/tmp/postgresqlite-RuSWRJsk"
+/home/nielse/.cache/postgresqlite/14.3/bin/postgres "-c" "dynamic_library_path=/home/nielse/.cache/postgresqlite/14.3/lib" "-D" "/home/nielse/lms/mlink2-docker/drink-runner-api/data/postgresqlite/pgdata" "-p" "48590" "--unix_socket_directories=/tmp/postgresqlite-KDJumcNf"
